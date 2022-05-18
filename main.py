@@ -1,5 +1,5 @@
 #импорты
-
+from configparser import ConfigParser
 
 
 #глобальные перменные
@@ -36,9 +36,9 @@ def read():
     if config.read('data.ini', encoding ='utf-8'):
         PLAYERS = {name: [int(n) for n in score.split(',')]
                    for name, score in config['Scores'].items()}
-        SAVES = {typle(name.split(';')): [[' ' if c == '-' else c for c in field[i:i+3]
-                                           for i  in range(0,9,3)]
-                                          for name, field in config['Saves'].items()}
+        SAVES = {typle(name.split(';')): [[' ' if c == '-' else c for c in field[i:i+3]]
+                                          for i in range(0,9,3)]
+                 for name, field in config['Saves'].items()}
         return True if config['General']['first'] == 'yes'  else False
     else:
         raise FileExistsError
@@ -54,7 +54,7 @@ while True:
     command = input()
 
 
-    if command in ('quit','выход')
+    if command in ('quit','выход'):
         break
 
     #ввод имени игрока
