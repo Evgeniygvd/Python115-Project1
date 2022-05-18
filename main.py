@@ -48,6 +48,7 @@ if read():
     show_help()
 
 
+
 #запуск суперцикла
 while True:
     command = input()
