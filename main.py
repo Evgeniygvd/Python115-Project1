@@ -11,9 +11,7 @@ SAVES = {}
 #         ('ivan','oleg'): [[]]}
 
 #функции
-def field():
-    global FIELD
-    pass
+
 
 def save():
     config = ConfigParser()
@@ -34,10 +32,11 @@ def read():
     global PLAYERS, SAVES
     config = ConfigParser()
     if config.read('data.ini', encoding ='utf-8'):
-        PLAYERS = {name: [int(n) for n in score.split(',')]
+        PLAYERS = {name.title(): [int(n) for n in score.split(',')]
                    for name, score in config['Scores'].items()}
-        SAVES = {typle(name.split(';')): [[' ' if c == '-' else c for c in field[i:i+3]]
-                                          for i in range(0,9,3)]
+        SAVES = {typle(name.split(';')):
+                     [[' ' if c == '-' else c for c in field[i:i+3]]
+                      for i in range(0,9,3)]
                  for name, field in config['Saves'].items()}
         return True if config['General']['first'] == 'yes' else False
     else:
