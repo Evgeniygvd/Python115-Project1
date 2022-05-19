@@ -39,7 +39,7 @@ def read():
         SAVES = {typle(name.split(';')): [[' ' if c == '-' else c for c in field[i:i+3]]
                                           for i in range(0,9,3)]
                  for name, field in config['Saves'].items()}
-        return True if config['General']['first'] == 'yes'  else False
+        return True if config['General']['first'] == 'yes' else False
     else:
         raise FileExistsError
 
