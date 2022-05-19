@@ -1,20 +1,21 @@
-#импорты
+# импорты
 from configparser import ConfigParser
 
 
-#глобальные перменные
+# глобальные переменные
 FIELD = [[' ']*3 for _ in range(3)]
 PLAYERS = {}
-#PLAYERS = {'Ivan':[1,1,0]}
+# PLAYERS = {'Ivan':[1,1,0]}
 SAVES = {}
-#SAVES = {('ivan','ai1'):[[]],
-#         ('ivan','oleg'): [[]]}
+# SAVES = {('ivan','ai1'):[[]],
+#          ('ivan','oleg'): [[]]}
 
-#функции
+# функции
 def field():
     global FIELD
     pass
 
+# комментарий обязателен
 def save():
     config = ConfigParser()
     config['Scores '] = {name: ',' .join(str(n) for n in score)
@@ -22,34 +23,34 @@ def save():
     config['Saves'] = {';'.join(name): ''.join(['-' if c == ' ' else c for r in field for c in r])
                        for name, field in SAVES.items()}
     config['General']['first'] = 'no'
-    with open('data.ini', 'w', enconding ='utf-8') as config_file:
+    with open('data.ini', 'w', encoding='utf-8') as config_file:
         config.write(config_file)
 
-
-
+# комментарий обязателен
 def show_help():
     pass
 
+# комментарий обязателен
 def read():
     global PLAYERS, SAVES
     config = ConfigParser()
-    if config.read('data.ini', encoding ='utf-8'):
+    if config.read('data.ini', encoding='utf-8'):
         PLAYERS = {name: [int(n) for n in score.split(',')]
                    for name, score in config['Scores'].items()}
-        SAVES = {typle(name.split(';')): [[' ' if c == '-' else c for c in field[i:i+3]]
+        SAVES = {tuple(name.split(';')): [[' ' if c == '-' else c for c in field[i:i+3]]
                                           for i in range(0,9,3)]
                  for name, field in config['Saves'].items()}
         return True if config['General']['first'] == 'yes' else False
     else:
         raise FileExistsError
 
-#чтение .ini файла
+# чтение .ini файла
 if read():
     show_help()
 
 
 
-#запуск суперцикла
+# запуск суперцикла
 while True:
     command = input()
 
@@ -57,5 +58,5 @@ while True:
     if command in ('quit','выход'):
         break
 
-    #ввод имени игрока
+    # ввод имени игрока
 
