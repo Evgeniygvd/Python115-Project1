@@ -1,7 +1,7 @@
 # модуль работы с данными игроков
 
 from configparser import ConfigParser
-from scores import PLAYERS
+
 
 PLAYER = tuple()
 SAVES = {}
@@ -14,7 +14,6 @@ def field():
         print('|',FIELD[i][0],'|',FIELD[i][1],'|',FIELD[i][2],'|')
     print('-'*13)
 
-    pass
 
 def save_ini():
     config = ConfigParser()
@@ -25,6 +24,8 @@ def save_ini():
     config['General']['first'] = 'no'
     with open('data.ini', 'w', enconding ='utf-8') as config_file:
         config.write(config_file)
+
+
 
 
 
@@ -55,4 +56,5 @@ def player_name(bot_mode=''):
             # Добавить имя второго игрока человека
             PLAYER = (PLAYER[0], input().lower())
     else:
+        pass
 
