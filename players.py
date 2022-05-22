@@ -9,6 +9,11 @@ PLAYERS = {'oleg':[1,1,1]}
 
 def field():
     global FIELD
+    for i in range(len(FIELD)):
+        print('-'*13)
+        print('|',FIELD[i][0],'|',FIELD[i][1],'|',FIELD[i][2],'|')
+    print('-'*13)
+
     pass
 
 def save_ini():
