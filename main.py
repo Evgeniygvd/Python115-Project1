@@ -62,3 +62,4 @@ while True:
             PLAYERS[player2] = [0, 0, 0]
     else:
         print(f'Количество игроков не может быть больше двух')
+        pass
