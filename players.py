@@ -2,11 +2,13 @@
 
 from configparser import ConfigParser
 
-
-PLAYER = tuple()
-SAVES = {}
 PLAYERS = {'oleg':[1,1,1]}
+PLAYER = tuple()
 
+SAVES = {}
+
+
+# обязательно подписывать: что за функция и что делает
 def field():
     global FIELD
     for i in range(len(FIELD)):
@@ -14,7 +16,7 @@ def field():
         print('|',FIELD[i][0],'|',FIELD[i][1],'|',FIELD[i][2],'|')
     print('-'*13)
 
-
+# обязательно подписывать: что за функция и что делает
 def save_ini():
     config = ConfigParser()
     config['Scores '] = {name: ',' .join(str(n) for n in score)
@@ -22,14 +24,10 @@ def save_ini():
     config['Saves'] = {';'.join(name): ''.join(['-' if c == ' ' else c for r in field for c in r])
                        for name, field in SAVES.items()}
     config['General']['first'] = 'no'
-    with open('data.ini', 'w', enconding ='utf-8') as config_file:
+    with open('data.ini', 'w', encoding='utf-8') as config_file:
         config.write(config_file)
 
-
-
-
-
-
+# обязательно подписывать: что за функция и что делает
 def read_ini():
     global PLAYERS, SAVES
     config = ConfigParser()
@@ -43,18 +41,22 @@ def read_ini():
     else:
         raise FileExistsError
 
+# обязательно подписывать: что за функция и что делает
 def player_name(bot_mode=''):
     global PLAYER
     # если имя игрока еще не вводилось
     if len(PLAYER) == 0:
-        PLAYER = (input().lower(),)
+        PLAYER = (input('введите имя игрока_> ').lower(),)
     elif len(PLAYER) == 1:
+        # если функции передан аргумент, значит нужно добавить бота
         if bot_mode:
+            # имя бота берётся не из пользовательского ввода, а из параметра функции
             # добавить имя бота с уровнем сложности
-            PLAYER = (PLAYER[0], input().lower())
+            PLAYER = (PLAYER[0], bot_mode)
+        # а если в параметре значение по умолчанию '', то добавляем имя второго человека
         else:
-            # Добавить имя второго игрока человека
-            PLAYER = (PLAYER[0], input().lower())
+            PLAYER = (PLAYER[0], input('введите имя второго игрока_> ').lower())
     else:
         pass
 
+# здесь должна быть функция или функции работы со статистикой

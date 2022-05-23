@@ -10,19 +10,18 @@ h = """Правила игры:
     """
 
 
-
+# обязательно подписывать: что за функция и что делает
 def show_help():
     print(h)
 
-
+# обязательно подписывать: что за функция и что делает
 def show_message(text):
-    width = gts()[0] -1
-    half_width = (width - len(text) - 2)/ 2
-    m = f"""{'#'* width}
-    {'#'* (width-2) + '#'}
-    {'#' + ' '* (ceil(half_width) + 'text.upper() + ' '* (floor(half_width)+'#'}
-    {'#'* (width-2) + '#'}
-    {'#'* width}"""
-    print('#'*width)
-    print(m, end ='\n\n')
-    pass
+    width = gts()[0] - 1
+    half_width = (width - len(text) - 2) / 2
+    # можно ещё вот так определить строку
+    m = (f"\n{'#' * width}"
+         + f"\n{'#' + ' ' * (width - 2) + '#'}"
+         + f"\n{'#' + ' ' * ceil(half_width) + text.upper() + ' ' * floor(half_width) + '#'}"
+         + f"\n{'#' + ' ' * (width - 2) + '#'}"
+         + f"\n{'#' * width}")
+    print(m, end='\n\n')
