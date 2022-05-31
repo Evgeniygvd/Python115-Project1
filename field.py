@@ -79,7 +79,7 @@ def check_saves(*, single = True):
 def game(load=False):
     global FIELD
     # одиночная False или парная True игра
-    flag = set(players.PLAYER).isdisjoint({'ai1','ai2'})
+    flag = set(players.PLAYER).isdisjoint({'ai1', 'ai2'})
     # флаг победы [0] или ничьей [1]
     win_or_tie = (False, False)
     # цикл для одной партии
